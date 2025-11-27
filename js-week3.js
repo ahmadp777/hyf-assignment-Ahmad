@@ -11,11 +11,9 @@ const names = [
   "Tala",
 ];
 const nameToRemove = "Ahmad";
-for (let name in names) {
-    if (names[name]=== nameToRemove) {
-        names.splice(name,1);
-        break;
-    }
+const index = names.indexOf(nameToRemove);
+if (index !== -1) {
+    names.splice(index, 1);
 }
 console.log(names);
 
@@ -24,17 +22,18 @@ console.log("Assignment 2");
 
 const travelInformation = {
   speed: 50,
-  destinationDistance: 432,
+  destinationDistance: 432
 };
 
 function giveDuration(obj) {
-   let s= obj.speed;
-   let d= obj.destinationDistance;
-   let hour= Math.floor(d/s);
-   let min= Math.floor((d%s)*60/s);
-   return `${hour} hours and ${min} minutes.`;
+   let velocity= obj.speed;
+   let distance= obj.destinationDistance;
+   let hour= Math.floor(distance/velocity);
+   let minute= Math.floor((distance%velocity)*60/velocity);
+   if (hour== 0)    return `${minute} minutes`;
+   if (minute==0)   return `${hour} hours`;
+   return `${hour} hours and ${minute} minutes`;
 }
-
 const travelTime = giveDuration(travelInformation);
 console.log(travelTime); // 8 hours and 38 minutes
 
@@ -67,18 +66,18 @@ const seriesDurations = [
     minutes: 30,
   },
 ];
-function percent(a,b) {
-    return (100*a/b).toFixed(3);    
+function percent(part,total) {
+    return (100*part/total).toFixed(3);    
 }
 function logOutSeriesText() {
     const myAge= 42;
   const myLifeMinutes= myAge*365*24*60;
   let sum=0;
   for (let i=0; i<seriesDurations.length; i++){
-  let  sDuration= (seriesDurations[i].days *24*60)+(seriesDurations[i].hours *60 + seriesDurations[i].minutes);
-  sum += sDuration;
+  let  seriesTimeMinutes= (seriesDurations[i].days *24*60)+(seriesDurations[i].hours *60 + seriesDurations[i].minutes);
+  sum += seriesTimeMinutes;
 
-  console.log(`"${seriesDurations[i].title}" took ${percent(sDuration,myLifeMinutes)}% of my life.`);  
+  console.log(`"${seriesDurations[i].title}" took ${percent(seriesTimeMinutes,myLifeMinutes)}% of my life.`);  
 
   }
   console.log(`in total that is ${percent(sum,myLifeMinutes)}% of my life.`);
@@ -173,21 +172,20 @@ addActivity("23th November", "Tiktok", 30);
 console.log(activities);
 
 function showStatus(activities) {
-let totalActivities= 0;
 let totalTime= 0;
 for (let act in activities) {
-  totalActivities += 1;
   totalTime += activities[act].duration;
 }
-console.log(`Yoy have added ${totalActivities} activities: They amount to ${totalTime} minutes of usage`);
+console.log(`Yoy have added ${activities.length} activities: They amount to ${totalTime} minutes of usage`);
 }
 showStatus(activities);
 console.log("\n");
 // improved addActivities function so that automatically figures the date
-let todayActivities= [];
-let today= new Date();
-let date= today.getDate() + "-" + (today.getMonth()+1) + "-" + today.getFullYear();
+
 function addActivitiesToday(activity, duration) {  
+  let todayActivities= [];
+let today= new Date();
+let date= today.toLocaleDateString();
   if (notReachLimit(todayActivities)) {
 todayActivities.push({date: date, activity:activity, duration: duration});
   } else {
