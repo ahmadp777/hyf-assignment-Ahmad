@@ -93,7 +93,7 @@ const notes = [];
 
 function saveNote(content, id) {
   // condition for fixing Codepen code, that adds empty notes
-   if (content !== ""){
+   if (content.trim() !== ""){
     notes.push({ content, id });
    }
 }
