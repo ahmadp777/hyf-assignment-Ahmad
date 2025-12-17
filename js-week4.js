@@ -4,13 +4,13 @@
 console.log("vowel count : ");
 
 function vowelCount(str) {
-    let vowelsArray="aeiou";
+  if (typeof str !== "string") return "Please enter a valid string";
+    const vowelsString="aeiou";
     let count=0;
     const charactersString= str.split("");
-    for (let character of charactersString) {
-        for (let i=0; i<5; i++) {
-            if (character === vowelsArray[i]) count++;
-        }
+   for (let char of charactersString) {
+        if (vowelsString.includes(char.toLowerCase())) 
+            count++;
     }
     return count;
 }
@@ -21,21 +21,28 @@ console.log(vowelCount(sentence));
 console.log("\n Square every digit : ");
 
 function squareEveryDigit(num) {
-    let resultArray=[];
-    let numberString= num.toString();
-    for (let number of numberString) 
-        resultArray.push(Number(number) * Number(number));
-    resultString= resultArray.join("");
-    result= Number(resultString);
-    console.log(result);
+  if (typeof num !== "number" || !Number.isInteger(num) || num < 0) {
+    console.log("Please enter a valid non-negative integer");
+    return;
+  }
+  const numberString = num.toString();
+  let resultString = "";
+
+  for (let number of numberString) {
+    resultString += Number(number) * Number(number);
+  }
+
+let result = Number(resultString);
+return result;
+
 }
-squareEveryDigit(743);
+console.log(squareEveryDigit(743));
 
 //===========Highest and Lowest========
 console.log("\n Highest and Lowest :");
 
 function highestAndLowest(numbersString) {
-    let numbersArray=[];
+    const numbersArray=[];
     for (let number of numbersString.split(" ")) 
         numbersArray.push(Number(number));
 
@@ -63,12 +70,16 @@ let toDoList = [];
 
 
 function getReply(command) {
+  if (typeof command !== "string") return "Please enter a valid command.";
   const commandLowerCase = command.toLowerCase();
 
-  if (commandLowerCase.startsWith("hello my name is")) {
-     userName = command.substring(17).trim();  ///??
+  const match = command.match(/^hello my name is\s+(.+)/i);
+
+  if (match) {
+    userName = match[1].trim();
     return `Nice to meet you ${userName}`;
   }
+
 
   if (commandLowerCase.includes("what is my name")) {
     if (!userName) return "I don't know your name yet.";
@@ -107,11 +118,18 @@ function getReply(command) {
 
 
     // Simple Math operation
-  if (commandLowerCase.startsWith("what is ")) {
-    let questionArray=commandLowerCase.split(" ");
-    let num1= Number(questionArray[2]);
-    let num2= Number(questionArray[4]);
-    let operator= questionArray[3];
+    const matched = commandLowerCase.match(
+      /^what is\s+(-?\d+)\s*([+\-*/])\s*(-?\d+)$/i
+      );
+
+  if (matched) {
+    const num1 = Number(matched[1]);
+    const operator = matched[2];
+    const num2 = Number(matched[3]);
+    if (isNaN(num1) || isNaN(num2)) {
+        return "Please enter valid numbers for the calculation.";
+  }
+
 
     switch (operator) {
         case "+" : 
@@ -131,10 +149,10 @@ function getReply(command) {
 
   // Timer
   if (commandLowerCase.startsWith("set a timer for")) {
-    const number = Number(command.match(/\d+/));
-    const milliseconds = number * 60 * 1000;
+    const timerTimeMinutes = Number(command.match(/\d+/));
+    const milliseconds = timerTimeMinutes * 60 * 1000;
     setTimeout(() => console.log("Timer done!"), milliseconds);
-    return `Timer set for ${number} minutes`;
+    return `Timer set for ${timerTimeMinutes} minutes`;
   }
 
   return "I don't understand your command.";
