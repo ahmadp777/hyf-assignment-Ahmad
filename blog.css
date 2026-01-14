@@ -1,0 +1,220 @@
+        
+        *, *::before, *::after {
+            box-sizing: border-box;            
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #494949;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 50px auto 1px auto;
+            padding: 40px;
+            line-height: 1.6;
+            background-color: rgb(193, 238, 251);            
+            border-radius: 20px;
+            overflow: hidden;
+            flex: 1; 
+        }
+        
+        .navbar {
+            display: flex;
+            background-color: #2d0c91;
+            padding: 0;
+            margin: -40px;           
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: left;
+            gap: 5px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+           font-weight: bold;
+        }        
+            
+        header {
+            text-align: center;
+            margin: 70px 0 30px 0;
+        }
+
+        header h1 {
+            color: rgb(38, 4, 105);
+            font-size: clamp(1.2rem, 4vw, 2.5rem);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;            
+            flex-shrink: 0; /* prevent shrinking */
+            object-fit: cover;
+            border-radius: 90px;
+            box-shadow: 2px 2px 7px rgba(0,0,0,0.7);
+            margin-left: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            
+        }
+        .about-me {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+
+        .bold-topic {
+            font-weight: bold;
+            font-size: clamp(1rem, 3vw, 1.8rem);
+            color: #360f85;
+        }
+
+        .about-text p {
+            text-align: justify;
+            text-justify: inter-word;
+            word-spacing: 0.1em;
+            text-indent: 15px;
+        }
+
+        .about-text a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .about-text a:hover {
+            text-decoration: underline;
+        }                
+        
+        .skills-languages-projects {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Container styles ==================================== */
+        .skills-container, .languages-container, .projects-container {
+            flex: 1;
+            padding: 0 30px;
+            border-radius: 10px;
+            background-color: rgb(27, 11, 94);
+        }
+
+        h2 {
+            font-size: clamp(1rem, 3vw, 1.8rem);
+            color: rgb(40, 112, 245);
+        }
+
+        .skills-list, .languages-list, .projects-list {
+            list-style: none;
+            line-height: 2;
+            padding: 0;
+            color: white;
+        }
+
+         .projects-list li>a {
+        text-decoration: none;
+        color: white;        
+        }
+        
+
+        .language-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .progress-bar {
+            width: 120px;
+            height: 8px;
+            background-color: #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #11b452;           
+        }         
+
+       .bottom-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .bg-color-btn {
+            margin-right: 20px;
+            padding: 8px;
+            height: 32px;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            font-family: 'Comic Neue', cursive;
+            font-weight: 700;
+            border-radius: 7px;
+            background-color: #23134e;
+            color: white;
+            cursor: pointer; 
+            transition: all 0.2s ease; 
+        }
+
+        .bg-color-btn:hover {
+            transform: scale(1.04); 
+        }
+        
+        .contact-icons {
+            display: flex;
+            justify-content: right;
+            gap: 10px;   
+        }
+
+        .contact-icons a>img {
+            width: 35px;
+            height: 35px;
+            object-fit: cover;
+            cursor: pointer;           
+        }
+        
+        footer {           
+            text-align: center;
+            padding: 20px;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            line-height: 1;
+        }
+
+        footer p {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .about-me {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+            }
+        }  

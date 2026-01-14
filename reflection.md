@@ -1,0 +1,7 @@
+1. I learned that to get a suitable answer, we should write an appropriate prompt. Sometimes summarizing the prompt to save time can lead to a wrong answer, so we should write the prompt concisely but complete.
+
+2. Sometimes a bad prompt produces incorrect code, so I need to check whether the code is correct and suitable. It can also generate redundant code, so we should compare the generated code with other existing code.
+
+3. AI is a very helpful and time-saving assistant. It saved me a lot of time by suggesting code I already knew, and sometimes it even suggests better code that I can use to improve my work. However, the most important thing when using AI is to understand each line of the generated code, so that if a problem occurs, I can fix it. AI sometimes cannot fix mistakes in my code on its own.
+
+4. First, AI can really diminish our creativity. I think that by thinking deeply about a problem and testing different codes, we learn new things that stay in our memory. Another risk is that AI may produce incorrect code due to a bad prompt, or even sometimes with a suitable prompt. Therefore, we should fully understand the meaning of the code before using it, so that if a problem occurs, we are able to fix it.
