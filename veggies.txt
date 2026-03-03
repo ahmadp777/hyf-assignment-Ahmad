@@ -3,5 +3,3 @@ potato
 broccolilili
 spinach
 tomato
-cucumber
-onion
