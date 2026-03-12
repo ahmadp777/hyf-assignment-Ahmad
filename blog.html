@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Personal Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="blog.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href=#about>About</a></li>
+                <li><a href=#skills>Skills</a></li>
+                <li><a href=#contact>Contact</a></li>
+                <li><a href=#projects>Projects</a></li>
+            </ul>            
+        </nav>
+        <header>
+            <h1>Ahmad Pak Mehr</h1>
+        </header>
+        <main>
+            <section id="about" class="section about-me">                
+                    <div class="about-text">
+                        <p><span class="bold-topic">About me: </span>I am currently a Web Development trainee at <a href="https://hackyourfuture.dk//" target="_blank"><strong>HackYourFuture</strong></a>, where I am learning to build modern, responsive, and user-friendly web applications. My journey into programming began with a deep personal interest in problem-solving and creativity. I started by teaching myself <em>HTML</em>, <em>CSS</em>, and <em>JavaScript</em>, which sparked my passion for turning ideas into functional digital solutions.</p>
+                    <p>Before entering the tech world, I earned my degree in Chemical Engineering and spent several years working in the oil industry as a <strong>Control Room Operator</strong> and <strong>Shift Supervisor</strong>. This experience helped me develop strong analytical thinking, attention to detail, and teamwork skills — qualities that now support my growth as a web developer. I am excited to combine my engineering mindset with my web development skills to build impactful digital products.</p>
+                    </div>                
+                <img src="https://i.ibb.co/LzmVncfj/pic.jpg" alt="My Profile Picture" class="profile-image">
+            </section>
+
+            <section class="section skills-languages-projects">
+                <div  id="skills" class="skills-container">
+                <h2>My Skills</h2>
+                <ul class="skills-list">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Git</li>                   
+                </ul>
+                </div>
+                 <div id="projects" class="projects-container">
+                    <h2>Projects</h2>
+                    <ul class="projects-list">
+                        <li><a href="">project1</a></li>
+                        <li><a href="">project2</a></li>
+                        <li><a href="">project3</a></li>
+                    </ul>
+                </div>
+                <div class="languages-container">
+                    <h2>Languages</h2>
+                    <ul class="languages-list">
+                        <li class="language-item">
+                            <span>English</span>
+                            <div class="progress-bar" >
+                                <div class="progress-fill" style="width:80%"></div>
+                            </div>
+                        </li>
+                        <li class="language-item">
+                            <span>Danish</span>
+                            <div class="progress-bar" aria-hidden="true">
+                                <div class="progress-fill" style="width:40%"></div>
+                            </div>
+                        </li>
+                        <li class="language-item">
+                            <span>Persian</span>
+                            <div class="progress-bar" aria-hidden="true">
+                                <div class="progress-fill" style="width:100%"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>               
+            </section>
+            <section class="bottom-section">
+                <button onclick="changeBackgroundColor()" class="bg-color-btn">Change Background Color</button>
+                <div id="contact" class="contact-icons">
+                    <a href="https://github.com/ahmadp777" target="_blank"><img src="https://i.ibb.co/svKWCf7Q/github-icon.png" alt="Github icon"></a>
+                    <a href="https://www.linkedin.com/in/ahmad-pakmehr-0b64111a2" target="_blank"><img src="https://i.ibb.co/yFB1TgSf/linkedin-icon.png" alt="Linkedin icon"></a>
+                    <a href="mailto:ahmad.pakmehr@gmail.com"><img src="https://i.ibb.co/6C78YWf/mail-icon.png" alt="Email icon"></a>                    
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 Ahmad. All rights reserved.</p>
+    </footer>
+    <script>
+        // generate a random RGB color
+        function randomRGBColor() {
+            const r = Math.floor(255 * Math.random());
+            const g = Math.floor(255 * Math.random());
+            const b = Math.floor(255 * Math.random());
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+            function changeBackgroundColor() {
+            const container = document.querySelector('.container');
+            if (!container) return;
+            
+            
+            container.style.transition = 'background-color 1s ease';
+            container.style.backgroundColor = randomRGBColor();
+        }
+    </script>
+</body>
+</html> 
