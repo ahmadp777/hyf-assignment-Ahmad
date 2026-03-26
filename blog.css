@@ -96,8 +96,7 @@
         }
 
         .about-text p {
-            text-align: justify;
-            text-justify: inter-word;            
+            text-align: justify;      
             font-size: clamp(0.82rem, 2.2vw, 1.1rem);
             word-spacing: 0.1em;
             text-indent: 15px;
