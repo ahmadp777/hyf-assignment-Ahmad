@@ -2,20 +2,52 @@
 
 const timeoutInput = document.getElementById("timeoutInput");
 const gameStartButton = document.getElementById("gameStartButton");
+const resetGameButton = document.getElementById("resetGameButton");
 const countS = document.getElementById("countS");
 const countL = document.getElementById("countL");
 const countdownDisplay = document.getElementById("countdownDisplay");
+const pressSContainer = document.getElementById("pressSContainer");
+const pressLContainer = document.getElementById("pressLContainer");
 
 let gameActive = false;
 let countdownInterval = null;
+
+function resetGame() {
+    gameActive = false;
+    
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+        countdownInterval = null;
+    }
+    
+    countS.textContent = "0";
+    countL.textContent = "0";
+    
+    countdownDisplay.textContent = "Countdown";
+    
+    // Remove gold border styling
+    pressSContainer.style.border = "";
+    pressLContainer.style.border = "";
+    
+    // Remove confetti canvases
+    const confettiCanvasS = pressSContainer.querySelector("canvas");
+    const confettiCanvasL = pressLContainer.querySelector("canvas");
+    if (confettiCanvasS) confettiCanvasS.remove();
+    if (confettiCanvasL) confettiCanvasL.remove();
+}
+
+resetGameButton.addEventListener("click", resetGame);
 
 gameStartButton.addEventListener("click", () => {
     const gameTimeSeconds = Number(timeoutInput.value.trim());
     if (isNaN(gameTimeSeconds) || gameTimeSeconds <= 0 || timeoutInput.value.trim() === "") {
         alert("Please enter a valid positive number for game time.");
         return;
-    }   
-
+    }
+    
+    // Reset before starting new game
+    resetGame();
+    
     gameActive = true;
 
     // Start countdown display
@@ -64,8 +96,6 @@ function finishGame() {
     
     const sPlayerScore = Number(countS.textContent);
     const lPlayerScore = Number(countL.textContent);
-    const pressSContainer = document.getElementById("pressSContainer");
-    const pressLContainer = document.getElementById("pressLContainer");
     
     if (sPlayerScore > lPlayerScore) {
         addConfetti(pressSContainer);

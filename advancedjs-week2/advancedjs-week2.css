@@ -8,7 +8,7 @@
     font-family: system-ui;
 }
 
-.start-button {
+.start-button , .reset-button {
     width: 6.5rem;
     padding: 6px;
     margin-left: 1rem;
@@ -21,7 +21,11 @@
     font-family: system-ui;
 }
 
-.countdown-display , .refresh-game {
+.reset-button {
+    background-color: #f37e76;
+}   
+
+.countdown-display {
     display: inline-block;
     width: 6.5rem;
     padding: 6px;
