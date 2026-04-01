@@ -1,0 +1,58 @@
+.timeout-input {
+    width: 6.5rem;
+    padding: 6px;
+    margin: 0;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: system-ui;
+}
+
+.start-button , .reset-button {
+    width: 6.5rem;
+    padding: 6px;
+    margin-left: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: 600;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: system-ui;
+}
+
+.reset-button {
+    background-color: #f37e76;
+}   
+
+.countdown-display {
+    display: inline-block;
+    width: 6.5rem;
+    padding: 6px;
+    margin-left: 1rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: system-ui;
+    }
+
+.press-S, .press-L {
+    margin: 0.625rem;
+    width: 18rem;
+    height: 11rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    font-family: Arial, Helvetica, sans-serif;
+    border: 2px solid #ccc; 
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}   
+
+.press-S h3, .press-L h3 {
+    margin: 0.625rem 0;
+    font-size: 1.125rem;
+    color: #333;
+}
