@@ -1,7 +1,7 @@
 // Assignment#1 - Doubling odd numbers
 
-let numbers= [1,2,3,4,5,6,7,8,9,10];
-const oddNumbers= numbers.filter(num => num%2 !==0);
+let numbers= [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const oddNumbers= numbers.filter(num => num % 2 !==0);
 const newNumbers= oddNumbers.map(num => num * 2);
 console.log(newNumbers);
 
@@ -9,7 +9,7 @@ console.log(newNumbers);
 //  Square root or square the number
 
 const squareRootOrSquare = (array => {
-    return array.map(number => Math.sqrt(number) % 1 == 0 ? Math.sqrt(number) : (number * number));
+    return array.map(number => {const root = Math.sqrt(number); return root % 1 === 0 ? root : (number * number)});
 });
 
 //  Remove every second element from the array
@@ -46,10 +46,12 @@ const moviesWithTag = movies.map(movie => {
 const moviesWithRatingsOver6 = movies.filter(movie => movie.rating > 6).map(movie => movie.rating);
 
 // 6: Count movies containing Surfer, Alien, or Benjamin (case insensitive)
-const countKeyword = movies.filter(movie => {
-    const lowerCaseTitle = movie.title.toLowerCase();
-    return lowerCaseTitle.includes("surfer") || lowerCaseTitle.includes("alien") || lowerCaseTitle.includes("benjamin");
-}).length;
+const keywords = ["surfer", "alien", "benjamin"];
+
+const keywordCount = movies.reduce((count, movie) => {
+const title = movie.title.toLowerCase();
+return count + keywords.filter(keyword => title.includes(keyword)).length;
+}, 0);
 
 // 7: Movies with duplicated words in title
 const moviesWithDuplicateWords = movies.filter(movie => {
@@ -83,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("ratingsOver6").textContent = moviesWithRatingsOver6.join(", ");
     
     // Count movies containing Surfer, Alien, or Benjamin
-    document.getElementById("keywordCount").textContent = countKeyword;
+    document.getElementById("keywordCount").textContent = keywordCount;
     
     // Duplicate words
     document.getElementById("duplicateWords").innerHTML = moviesWithDuplicateWords.map(movie => movie.title).join(", ");
