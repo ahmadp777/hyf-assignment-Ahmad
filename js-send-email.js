@@ -8,6 +8,6 @@ function sendEmailTo(recipient) {
     const recipientsList= emailList.split("|");
     console.log(recipientsList);
     for (let i=0; i<recipientsList.length; i++) {
-        recipient=recipientsList[i];  
+        let recipient=recipientsList[i];  
         sendEmailTo(recipient);         
     }
