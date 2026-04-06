@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="js2-week3.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Advanced Javascript - Week3</title>
+</head>
+<body>
+    <div class="container">
+        <section class="header">
+            <h2>Currency Calculator</h2>
+        </section>
+    
+        <section class="from-section">
+            <div class="section-label">From</div>
+            <div class="section-content">
+                <label for="fromCurrency">Select currency to convert from</label>
+                <div class="input-group">
+                    <select name="from-currency" id="fromCurrency">
+                    </select>
+                    <input type="number" id="enteredAmount" class="amount-input" placeholder="Enter amount">
+                </div>
+            </div>
+        </section>
+
+        <div class="middle">
+            <span class="swap-icon">&#8645;</span>
+            <button class="convert-btn" id="convertButton" type="button">CONVERT</button>
+        </div>
+
+        <section class="to-section">
+            <div class="section-label">To</div>
+            <div class="section-content">
+                <label for="toCurrency">Select currency to convert to</label>
+                <div class="input-group">
+                    <select name="to-currency" id="toCurrency">
+                    </select>
+                    <p id="outputAmount" class="amount-output"></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js2-week3.js"></script>
+</body>
+</html>
