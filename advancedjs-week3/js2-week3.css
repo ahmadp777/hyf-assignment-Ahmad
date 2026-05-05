@@ -141,11 +141,6 @@ body {
     outline: 3px solid rgba(255, 255, 255, 0.5);
 }
 
-/* .amount-input::placeholder {
-    color: #aaa;
-    font-weight: 400;
-} */
-
 .amount-output {
     flex: 1;
     min-width: 70px;

@@ -10,9 +10,6 @@ async function loadCurrencies() {
 
         const currencies = Object.keys(data.rates);
         
-        fromCurrency.innerHTML = "";
-        toCurrency.innerHTML = "";
-        
         currencies.forEach(currency => {
             const optionFrom = document.createElement("option");
             optionFrom.value = currency;
@@ -36,9 +33,9 @@ async function loadCurrencies() {
 
 loadCurrencies();
 
-const outputAmount = document.getElementById("outputAmount");
 
 async function convertCurrency() {
+    const outputAmount = document.getElementById("outputAmount");
     const fromValue = fromCurrency.value;
     const toValue = toCurrency.value;
     const enteredAmountValue = parseFloat(enteredAmount.value);
