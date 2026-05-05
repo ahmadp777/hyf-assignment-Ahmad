@@ -27,7 +27,7 @@ function displayAfterDelay(delay, stringToLog) {
 
 // Create button to call function
 
-delayButton= document.getElementById("delayCallButton");
+const delayButton= document.getElementById("delayCallButton");
 delayButton.addEventListener("click", () => displayAfterDelay(5, "Called after 5 seconds"));
 
 // planet log function
