@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced JavaScript - week2</title>
+    <link rel="stylesheet" href="advancedjs-week2.css">
+</head>
+<body>
+    <h2>Advanced JavaScript - week2</h2>
+
+    <p id="delayDisplay">Loading...</p>
+
+    <button id="delayCallButton" type="button">Try delay function</button>
+    <!-- Used <br> to hold place for output -->
+    <p id="delayCallText"><br></p>
+
+    <button id="logLocationButton" type="button">Log Location</button>
+    <p id="userLocation"><br></p>
+    <p>
+    <button id="callbackButton" type="button">Run Function</button>
+    after <input type="number" id="delayInput" placeholder="delay time on sec"> seconds.
+    </p>
+    <p id="callbackOutput"><br></p>
+    <p id="doubleClick">If double clicked, text will appear here.</p>
+    <p id="jokeDisplay"><br></p>
+
+    <p>----------------------------------------------------------------------------------</p>
+    <label for="timeoutInput">Game Time (seconds):</label>
+    <input type="number" class="timeout-input" id="timeoutInput" placeholder="Timeout value" min="0" required>
+    <button class="start-button" id="gameStartButton" type="button">Start Game</button>
+    <span class="countdown-display" id="countdownDisplay">Countdown</span>
+    <button class="reset-button" id="resetGameButton" type="button">Reset Game</button>
+    <p>________________________________________________________________________________</p>
+    <div class="press-S" id="pressSContainer">
+        <h3>Press S</h3>
+        <p id="countS">0</p>
+    </div>
+    <div class="press-L" id="pressLContainer">
+        <h3>Press L</h3>
+        <p id="countL">0</p>
+    </div>
+
+    <script src="advancedjs-week2.js"></script>
+    <script src="faster-presser-game.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</body>
+</html>
