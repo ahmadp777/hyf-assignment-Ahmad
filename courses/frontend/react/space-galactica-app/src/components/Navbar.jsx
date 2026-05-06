@@ -33,12 +33,20 @@ export const Navbar = () => {
       <nav className={styles.navbar}>
         <div className={styles.navbarBG} />
         <ul className={styles.navbarList}>
-          {/* 🧑🏽‍🚀 Task - Week 2 */}
-          <NavItem title={navbarItems[0].title} link={navbarItems[0].link} isActive={navbarItems[0].link === currentPath} />
-          <NavItem title={navbarItems[1].title} link={navbarItems[1].link} isActive={navbarItems[1].link === currentPath} />
-          <NavItem title={navbarItems[2].title} link={navbarItems[2].link} isActive={navbarItems[2].link === currentPath} />
+          {/* 🧑🏽‍🚀 Task - Week 2 . I kept and commented lines to check */}
+          {/* <NavItem title={navbarItems[0].title} link={navbarItems[0].link} isActive={navbarItems[0].link === currentPath} /> */}
+          {/* <NavItem title={navbarItems[1].title} link={navbarItems[1].link} isActive={navbarItems[1].link === currentPath} /> */}
+          {/* <NavItem title={navbarItems[2].title} link={navbarItems[2].link} isActive={navbarItems[2].link === currentPath} /> */}
           {/* 🧑🏽‍🚀 Task - Week 3 */}
           {/* Replace repeating content by using .map() and the previously created NavItem component. */}
+          {navbarItems.map((item) => (
+            <NavItem
+              key={item.link}
+              title={item.title}
+              link={item.link}
+              isActive={item.link === currentPath}
+            />
+          ))}
           <li className={styles.wishlistBadge} aria-label="Wishlist">
           </li>
         </ul>

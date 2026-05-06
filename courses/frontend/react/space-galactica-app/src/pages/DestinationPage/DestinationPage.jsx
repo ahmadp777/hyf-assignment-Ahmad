@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./DestinationPage.module.css";
-import { PlanetsWishlistItem } from "./AddWishlistItem";
+import { AddWishlistItem , PlanetsWishlistItem } from "./AddWishlistItem";
 
 const PlanetCard = ({
   name,
@@ -69,10 +69,19 @@ export const Destinations = () => {
   };
 
   const addPlanetToWishlist = (name, thumbnail) => {
-    setPlanetsWishlist((currentWishlist) => [
-      ...currentWishlist,
-      { name, thumbnail },
-    ]);
+    setPlanetsWishlist((currentWishlist) => {
+      const alreadyExists = currentWishlist.some(
+        (planet) =>
+          planet.thumbnail === thumbnail ||
+          planet.name.toLowerCase() === name.toLowerCase()
+      );
+
+      if (alreadyExists) {
+        return currentWishlist;
+      }
+
+      return [...currentWishlist, { name, thumbnail }];
+    });
   };
   const removePlanetFromWishlist = (name) => {
     setPlanetsWishlist((currentWishlist) =>
@@ -94,16 +103,21 @@ export const Destinations = () => {
             </p>
           )}
 
-          {/* 🧑🏽‍🚀 Task - Week 3 */}
-          {/* Use the AddWishlistItem component here. */}
-
-          {/* 🧑🏽‍🚀 Task - Week 3
+          <AddWishlistItem onAddWishlistItem={addPlanetToWishlist} />
+          // 🧑🏽‍🚀 Task - Week 3
           <h3>Your current wishlist</h3>
-          <div className={styles.wishlistList}>
-            ...
-            Use .map() to display the wishlist planets with the PlanetsWishlistItem component. 
+          <div className={styles.wishlistList}>           
+             {planetsWishlist.map((planet, index) => (
+              <PlanetsWishlistItem
+                key={`${planet.name}-${index}`}
+                name={planet.name}
+                thumbnail={planet.thumbnail}
+                onRemove={() => removePlanetFromWishlist(planet.name)}
+              />
+            ))}
+
           </div> 
-          */}
+          
         </section>
         <section className="card">
           <h2>Possible destinations</h2>
