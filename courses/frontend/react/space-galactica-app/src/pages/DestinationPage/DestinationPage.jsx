@@ -1,6 +1,7 @@
-import { useState } from "react";
+// import { useState } from "react";
 import styles from "./DestinationPage.module.css";
 import { AddWishlistItem , PlanetsWishlistItem } from "./AddWishlistItem";
+import { useWishlist } from "../../contexts/WishlistContext"; 
 
 const PlanetCard = ({
   name,
@@ -26,8 +27,8 @@ const PlanetCard = ({
 };
 
 export const Destinations = () => {
-  const [planetsWishlist, setPlanetsWishlist] = useState([]);
-  const wishlistCount = planetsWishlist.length;
+  const { planetsWishlist, addPlanetToWishlist, removePlanetFromWishlist, isPlanetInWishlist, wishlistCount } = useWishlist();
+
   const planets = [
     {
       name: "Europa",
@@ -55,10 +56,6 @@ export const Destinations = () => {
     },
   ];
 
-  const isPlanetInWishlist = (planetName) => {
-    return planetsWishlist.some((planet) => planet.name === planetName);
-  };
-
   const togglePlanetSelection = (name, thumbnail) => {
     if (isPlanetInWishlist(name)) {
       removePlanetFromWishlist(name);
@@ -66,27 +63,6 @@ export const Destinations = () => {
     }
 
     addPlanetToWishlist(name, thumbnail);
-  };
-
-  const addPlanetToWishlist = (name, thumbnail) => {
-    setPlanetsWishlist((currentWishlist) => {
-      const alreadyExists = currentWishlist.some(
-        (planet) =>
-          planet.thumbnail === thumbnail ||
-          planet.name.toLowerCase() === name.toLowerCase()
-      );
-
-      if (alreadyExists) {
-        return currentWishlist;
-      }
-
-      return [...currentWishlist, { name, thumbnail }];
-    });
-  };
-  const removePlanetFromWishlist = (name) => {
-    setPlanetsWishlist((currentWishlist) =>
-      currentWishlist.filter((planet) => planet.name !== name)
-    );
   };
 
   return (

@@ -1,9 +1,11 @@
+
 import classNames from 'classnames';
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Planet } from '../icons/Planet';
 import { Badge } from './Badge';
 import { NavItem } from './NavItem';
+import { useWishlist } from '../contexts/WishlistContext.jsx';
 import styles from './Navbar.module.css';
 
 const navbarItems = [
@@ -23,6 +25,7 @@ const navbarItems = [
 
 export const Navbar = () => {
   const currentPath = useLocation().pathname;
+  const { wishlistCount } = useWishlist();
 
   return (
     <header className={styles.headerContainer}>
@@ -33,12 +36,6 @@ export const Navbar = () => {
       <nav className={styles.navbar}>
         <div className={styles.navbarBG} />
         <ul className={styles.navbarList}>
-          {/* 🧑🏽‍🚀 Task - Week 2 . I kept and commented lines to check */}
-          {/* <NavItem title={navbarItems[0].title} link={navbarItems[0].link} isActive={navbarItems[0].link === currentPath} /> */}
-          {/* <NavItem title={navbarItems[1].title} link={navbarItems[1].link} isActive={navbarItems[1].link === currentPath} /> */}
-          {/* <NavItem title={navbarItems[2].title} link={navbarItems[2].link} isActive={navbarItems[2].link === currentPath} /> */}
-          {/* 🧑🏽‍🚀 Task - Week 3 */}
-          {/* Replace repeating content by using .map() and the previously created NavItem component. */}
           {navbarItems.map((item) => (
             <NavItem
               key={item.link}
@@ -50,9 +47,7 @@ export const Navbar = () => {
           <li className={styles.wishlistBadge} aria-label="Wishlist">
           </li>
         </ul>
-        {/* 🧑🏽‍🚀 Task - Week 4 - part 3 */}
-        {/* Take the count of the planets wishlist from the context and display it in the Badge. */}
-        <Badge count={0}>
+        <Badge count={wishlistCount}>
           <Planet color="white"  />
         </Badge>
       </nav>
