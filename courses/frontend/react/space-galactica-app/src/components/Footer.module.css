@@ -43,3 +43,23 @@
 .footerList li {
   padding-block: var(--spacing-04);
 }
+
+.pagesList {
+  list-style-type: none;
+}
+
+.pagesList li {
+  padding-block: var(--spacing-08);
+}
+
+.socialMediaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.socialMediaIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}

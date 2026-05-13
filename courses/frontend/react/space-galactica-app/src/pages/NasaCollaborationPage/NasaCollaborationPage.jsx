@@ -3,11 +3,24 @@ import styles from './NasaCollaborationPage.module.css';
 
 // Read "/app/nasa_collaboration/README.md" for more info about the API_KEY
 // You need a proper API_KEY for the requests to work
-const API_KEY = 'API_KEY';
+const API_KEY = 't1GMLo0AmYGX87Ckvcnwcp0CGg2bvmXcSU5XhSol';
 
 const NASA_URLs = {
   astronomyPicOfTheDay: `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`,
-  marsRoverPhoto: `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=${API_KEY}`,
+  marsRoverPhoto: `https://images-api.nasa.gov/search?q=mars+rover+curiosity&media_type=image`,
+};
+
+const RoverPhoto = ({ src, date, roverName }) => {
+  return (
+    <>
+      <p>{roverName} - Date {date}</p>
+      <img
+        className={styles.nasaPicOfTheDayImg}
+        src={src}
+        alt={`${roverName} photo on ${date}`}
+      />
+    </>
+  );
 };
 
 export const NasaCollaboration = () => {
@@ -22,8 +35,12 @@ export const NasaCollaboration = () => {
 
     fetchRoverPhotos();
 
-    // 🧑🏽‍🚀 Task - Week 3 
-    // Fetch the extra data for NASA_URLs.astronomyPicOfTheDay and save it to the dailyImg state variable.
+    const fetchAstronomyPicOfTheDay = async () => {
+      const dailyImgResponse = await fetch(NASA_URLs.astronomyPicOfTheDay).then(response => response.json());
+      setDailyImg(dailyImgResponse);
+    };
+
+    fetchAstronomyPicOfTheDay(); 
   }, []);
 
   return (
@@ -32,27 +49,30 @@ export const NasaCollaboration = () => {
         <h1>Collaboration with NASA</h1>
         <section className="card">
           <h2>Astronomy Picture of the day</h2>
-          {/* 🧑🏽‍🚀 Task - Week 3 */}
-          {/* After fetching data from the NASA_URLs.astronomyPicOfTheDay url, display the returned data here. */}
-          {/* You should display the title, explanation, and the image using the url from the response */}
+          {dailyImg.url ? (
+            <>
+              <p>{dailyImg.title}</p>
+              <img className={styles.nasaPicOfTheDayImg} src={dailyImg.url} alt={dailyImg.title} />
+              <p>{dailyImg.explanation}</p>
+            </>
+          ) : (
+            <p>Loading astronomy picture of the day...</p>
+          )}
         </section>
         <section className="card">
           <h2>Rover Photos</h2>
-          {/* 🧑🏽‍🚀 Task - Week 3 */}
-          {/* Iterate over the roverPhoto?.photos array and display all the pictures. */}
           {
-            roverPhoto?.photos?.length ? (
+            roverPhoto?.collection?.items?.length ? (
               <>
-                {/* 🧑🏽‍🚀 Task - Week 3 */}
-                {/* Create a react component for the <RoverPhoto />, which should accept the following props: */}
-                {/* 1. src: source of the img; */}
-                {/* 2. date: earth_date data coming from the API; */}
-                {/* 3. roverName: will be in the rover object. */}
                 
-                {/* If you don't know how the data looks like you can log it out to the console and investigate in the browser's devtools. */}
-
-                <p>Date {roverPhoto.photos[0]?.earth_date}</p>
-                <img className={styles.nasaPicOfTheDayImg} src={roverPhoto.photos[0]?.img_src} alt={dailyImg.title} />
+                {roverPhoto.collection.items.map((item, index) => (
+                  <RoverPhoto
+                    key={index}
+                    src={item.links[0].href}
+                    date={item.data[0]?.date_created?.slice(0, 10)}
+                    roverName={item.data[0]?.title || 'Rover'}
+                  />
+                ))}
               </>
               ) : (
                 <p>Loading rover photos...</p>
